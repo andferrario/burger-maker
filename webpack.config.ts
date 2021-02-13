@@ -26,6 +26,10 @@ const createConfiguration: webpack.ConfigurationFactory = (_env, options) => {
             loader: 'babel-loader',
           },
         },
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader'],
+        },
       ],
     },
     plugins: [
