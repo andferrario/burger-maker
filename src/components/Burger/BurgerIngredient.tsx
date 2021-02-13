@@ -9,10 +9,10 @@ export const BurgerIngredient: React.FC<IngredientProps> = ({ ingredientType }) 
   let ingredient;
   switch (ingredientType) {
     case 'bread-bottom':
-      ingredient = <div className="BreadBottom" />;
+      ingredient = <div className="bread-bottom" />;
       break;
     case 'bread-top':
-      ingredient = <div className="BreadTop" />;
+      ingredient = <div className="bread-top" />;
       break;
     default:
       ingredient = null;
