@@ -1,6 +1,6 @@
 import React from 'react';
 import { BurgerIngredient } from './BurgerIngredient';
-import './Burger.css';
+import '../../styles/Burger.css';
 
 export const Burger: React.FC = () => (
   <div className="burger">

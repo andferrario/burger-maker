@@ -1,5 +1,5 @@
 import React from 'react';
-import './Layout.css';
+import '../../styles/Layout.css';
 
 export const Layout: React.FC = ({ children }) => (
   <>
