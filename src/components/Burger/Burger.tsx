@@ -2,13 +2,24 @@ import React from 'react';
 import { BurgerIngredient } from './BurgerIngredient';
 import '../../styles/Burger.css';
 
-export const Burger: React.FC = () => (
-  <div className="burger">
-    <BurgerIngredient ingredientType="bread-top" />
-    <BurgerIngredient ingredientType="salad" />
-    <BurgerIngredient ingredientType="cheese" />
-    <BurgerIngredient ingredientType="meat" />
-    <BurgerIngredient ingredientType="bacon" />
-    <BurgerIngredient ingredientType="bread-bottom" />
-  </div>
-);
+interface BurgerProps {
+  ingredients: Record<string, number>;
+}
+
+export const Burger: React.FC<BurgerProps> = ({ ingredients }) => {
+  const ingredientsToComponent = Object.keys(ingredients).map((ingredientName) => {
+    const amount = ingredients[ingredientName];
+    return [...Array(amount)].map((_, index) => {
+      const uniqueIngredientKey = ingredientName + index;
+      return <BurgerIngredient key={uniqueIngredientKey} ingredientType={ingredientName} />;
+    });
+  });
+
+  return (
+    <div className="burger">
+      <BurgerIngredient ingredientType="bread-top" />
+      {ingredientsToComponent}
+      <BurgerIngredient ingredientType="bread-bottom" />
+    </div>
+  );
+};

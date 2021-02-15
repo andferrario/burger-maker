@@ -1,9 +1,9 @@
 import React from 'react';
 import { Layout } from './layout/Layout';
-import { Burger } from './Burger/Burger';
+import { BurgerMaker } from './BurgerMaker';
 
 export const App: React.FC = () => (
   <Layout>
-    <Burger />
+    <BurgerMaker />
   </Layout>
 );
