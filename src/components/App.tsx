@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout } from './Layout/Layout';
-// eslint-disable-next-line import/named
 import { BurgerMaker } from './BurgerMaker';
+import '../styles/App.css';
 
 export const App: React.FC = () => (
   <Layout>
