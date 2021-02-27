@@ -27,10 +27,18 @@ export const BurgerMaker: React.FC = () => {
     setTotalPrice(totalPrice + INGREDIENT_PRICE[type]);
   };
 
+  const removeIngredientHandler = (type: string) => {
+    const updatedIngredients = { ...ingredients };
+    updatedIngredients[type] = ingredients[type] - 1;
+    setIngredients(updatedIngredients);
+
+    setTotalPrice(totalPrice - INGREDIENT_PRICE[type]);
+  };
+
   return (
     <>
       <Burger ingredients={ingredients} />
-      <BuildControls ingredientAdded={addIngredientHandler} />
+      <BuildControls ingredientAdded={addIngredientHandler} ingredientRemoved={removeIngredientHandler} />
     </>
   );
 };

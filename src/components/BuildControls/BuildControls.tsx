@@ -11,13 +11,21 @@ const controls = [
 
 interface BuildControlsProps {
   ingredientAdded: (type: string) => void;
+  ingredientRemoved: (type: string) => void;
 }
 
-export const BuildControls: React.FC<BuildControlsProps> = ({ ingredientAdded }) => {
+export const BuildControls: React.FC<BuildControlsProps> = ({ ingredientAdded, ingredientRemoved }) => {
   return (
     <div className="build-controls">
       {controls.map((control) => {
-        return <Control key={control.label} label={control.label} added={() => ingredientAdded(control.type)} />;
+        return (
+          <Control
+            key={control.label}
+            label={control.label}
+            added={() => ingredientAdded(control.type)}
+            removed={() => ingredientRemoved(control.type)}
+          />
+        );
       })}
     </div>
   );
