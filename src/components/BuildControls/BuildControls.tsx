@@ -9,11 +9,15 @@ const controls = [
   { label: 'Bacon', type: 'bacon' },
 ];
 
-export const BuildControls: React.FC = () => {
+interface BuildControlsProps {
+  ingredientAdded: (type: string) => void;
+}
+
+export const BuildControls: React.FC<BuildControlsProps> = ({ ingredientAdded }) => {
   return (
     <div className="build-controls">
       {controls.map((control) => {
-        return <Control key={control.label} label={control.label} />;
+        return <Control key={control.label} label={control.label} added={() => ingredientAdded(control.type)} />;
       })}
     </div>
   );

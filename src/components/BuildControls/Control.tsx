@@ -1,14 +1,18 @@
 import React from 'react';
 import '../../styles/Control.css';
 
-export const Control: React.FC<{ label: string }> = ({ label }) => {
+interface ControlProps {
+  label: string;
+  added: () => void;
+}
+export const Control: React.FC<ControlProps> = ({ label, added }) => {
   return (
     <div className="control">
-      <div className="label">{label}</div>
       <button type="button" className="less">
         Less
       </button>
-      <button type="button" className="more">
+      <div className="label">{label}</div>
+      <button type="button" className="more" onClick={added}>
         More
       </button>
     </div>
