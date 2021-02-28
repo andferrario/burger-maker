@@ -14,11 +14,20 @@ interface BuildControlsProps {
   ingredientAdded: (type: string) => void;
   ingredientRemoved: (type: string) => void;
   ingredients: Ingredient;
+  price: number;
 }
 
-export const BuildControls: React.FC<BuildControlsProps> = ({ ingredientAdded, ingredientRemoved, ingredients }) => {
+export const BuildControls: React.FC<BuildControlsProps> = ({
+  ingredientAdded,
+  ingredientRemoved,
+  ingredients,
+  price,
+}) => {
   return (
     <div className="build-controls">
+      <p>
+        Current price: <strong>{price.toFixed(2)}</strong>
+      </p>
       {controls.map((control) => {
         return (
           <Control

@@ -47,6 +47,7 @@ export const BurgerMaker: React.FC = () => {
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngredientHandler}
         ingredients={ingredients}
+        price={totalPrice}
       />
     </>
   );
