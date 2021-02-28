@@ -7,18 +7,21 @@ interface BurgerProps {
 }
 
 export const Burger: React.FC<BurgerProps> = ({ ingredients }) => {
-  const ingredientsToComponent = Object.keys(ingredients).map((ingredientName) => {
-    const amount = ingredients[ingredientName];
-    return [...Array(amount)].map((_, index) => {
-      const uniqueIngredientKey = ingredientName + index;
-      return <BurgerIngredient key={uniqueIngredientKey} ingredientType={ingredientName} />;
-    });
-  });
+  const ingredientsToComponent = Object.keys(ingredients)
+    .map((ingredientName) => {
+      const amount = ingredients[ingredientName];
+      return [...Array(amount)].map((_, index) => {
+        const uniqueIngredientKey = ingredientName + index;
+        return <BurgerIngredient key={uniqueIngredientKey} ingredientType={ingredientName} />;
+      });
+    })
+    .flat(); // .reduce((acc, val) => acc.concat(val),[]);
 
+  const noIngredients = <p>Please add ingredients!</p>;
   return (
     <div className="burger">
       <BurgerIngredient ingredientType="bread-top" />
-      {ingredientsToComponent}
+      {ingredientsToComponent.length === 0 ? noIngredients : ingredientsToComponent}
       <BurgerIngredient ingredientType="bread-bottom" />
     </div>
   );
