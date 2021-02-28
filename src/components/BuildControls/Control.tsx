@@ -5,11 +5,12 @@ interface ControlProps {
   label: string;
   added: () => void;
   removed: () => void;
+  disabled: boolean;
 }
-export const Control: React.FC<ControlProps> = ({ label, added, removed }) => {
+export const Control: React.FC<ControlProps> = ({ label, added, removed, disabled }) => {
   return (
     <div className="control">
-      <button type="button" className="less" onClick={removed}>
+      <button type="button" className="less" onClick={removed} disabled={disabled}>
         Less
       </button>
       <div className="label">{label}</div>

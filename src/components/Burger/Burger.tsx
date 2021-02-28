@@ -1,9 +1,10 @@
 import React from 'react';
 import { BurgerIngredient } from './BurgerIngredient';
 import '../../styles/Burger.css';
+import { Ingredient } from '../../utils/Ingredient';
 
 interface BurgerProps {
-  ingredients: Record<string, number>;
+  ingredients: Ingredient;
 }
 
 export const Burger: React.FC<BurgerProps> = ({ ingredients }) => {

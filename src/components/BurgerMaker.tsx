@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Burger } from './Burger/Burger';
 import { BuildControls } from './BuildControls/BuildControls';
+import { Ingredient } from '../utils/Ingredient';
 
 const INGREDIENT_PRICE = {
   salad: 0.3,
@@ -10,7 +11,7 @@ const INGREDIENT_PRICE = {
 };
 
 export const BurgerMaker: React.FC = () => {
-  const [ingredients, setIngredients] = useState({
+  const [ingredients, setIngredients] = useState<Ingredient>({
     salad: 0,
     cheese: 0,
     meat: 0,
@@ -29,7 +30,11 @@ export const BurgerMaker: React.FC = () => {
 
   const removeIngredientHandler = (type: string) => {
     const updatedIngredients = { ...ingredients };
-    updatedIngredients[type] = ingredients[type] - 1;
+    const oldCount = ingredients[type];
+    if (oldCount <= 0) {
+      return;
+    }
+    updatedIngredients[type] = oldCount - 1;
     setIngredients(updatedIngredients);
 
     setTotalPrice(totalPrice - INGREDIENT_PRICE[type]);
@@ -38,7 +43,11 @@ export const BurgerMaker: React.FC = () => {
   return (
     <>
       <Burger ingredients={ingredients} />
-      <BuildControls ingredientAdded={addIngredientHandler} ingredientRemoved={removeIngredientHandler} />
+      <BuildControls
+        ingredientAdded={addIngredientHandler}
+        ingredientRemoved={removeIngredientHandler}
+        ingredients={ingredients}
+      />
     </>
   );
 };
