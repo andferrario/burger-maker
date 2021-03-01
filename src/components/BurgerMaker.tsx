@@ -17,8 +17,13 @@ export const BurgerMaker: React.FC = () => {
     meat: 0,
     bacon: 0,
   });
+  const [totalPrice, setTotalPrice] = useState<number>(4.0);
+  const [purchasable, setPurchasable] = useState<boolean>(false);
 
-  const [totalPrice, setTotalPrice] = useState(4.0);
+  const updatePurchasable = (updatedIngredients: Ingredient) => {
+    const sumOfIngredients = Object.values(updatedIngredients).reduce((acc, elem) => acc + elem, 0);
+    setPurchasable(sumOfIngredients >= 1);
+  };
 
   const addIngredientHandler = (type: string) => {
     const updatedIngredients = { ...ingredients };
@@ -26,6 +31,7 @@ export const BurgerMaker: React.FC = () => {
     setIngredients(updatedIngredients);
 
     setTotalPrice(totalPrice + INGREDIENT_PRICE[type]);
+    updatePurchasable(updatedIngredients);
   };
 
   const removeIngredientHandler = (type: string) => {
@@ -38,6 +44,7 @@ export const BurgerMaker: React.FC = () => {
     setIngredients(updatedIngredients);
 
     setTotalPrice(totalPrice - INGREDIENT_PRICE[type]);
+    updatePurchasable(updatedIngredients);
   };
 
   return (
@@ -48,6 +55,7 @@ export const BurgerMaker: React.FC = () => {
         ingredientRemoved={removeIngredientHandler}
         ingredients={ingredients}
         price={totalPrice}
+        purchasable={purchasable}
       />
     </>
   );

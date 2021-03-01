@@ -15,6 +15,7 @@ interface BuildControlsProps {
   ingredientRemoved: (type: string) => void;
   ingredients: Ingredient;
   price: number;
+  purchasable: boolean;
 }
 
 export const BuildControls: React.FC<BuildControlsProps> = ({
@@ -22,6 +23,7 @@ export const BuildControls: React.FC<BuildControlsProps> = ({
   ingredientRemoved,
   ingredients,
   price,
+  purchasable,
 }) => {
   return (
     <div className="build-controls">
@@ -39,6 +41,9 @@ export const BuildControls: React.FC<BuildControlsProps> = ({
           />
         );
       })}
+      <button className="order-button" type="button" disabled={!purchasable}>
+        ORDER NOW
+      </button>
     </div>
   );
 };
