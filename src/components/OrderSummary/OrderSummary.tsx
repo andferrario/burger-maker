@@ -7,14 +7,16 @@ interface OrderSummaryProps {
 
 export const OrderSummary: React.FC<OrderSummaryProps> = ({ ingredients }) => {
   const orderList = Object.keys(ingredients).map((ingredientName) => (
-    <li>
+    <li key={ingredientName}>
       <span style={{ textTransform: 'capitalize' }}>{ingredientName}</span>: {ingredients[ingredientName]}
     </li>
   ));
 
   return (
     <>
-      <p>YOUR ORDER</p>
+      <p>
+        <strong>YOUR ORDER</strong>
+      </p>
       <p>A super burger with the following ingredients:</p>
       <ul>{orderList}</ul>
     </>
