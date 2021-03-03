@@ -16,6 +16,7 @@ interface BuildControlsProps {
   ingredients: Ingredient;
   price: number;
   purchasable: boolean;
+  showReceipt: () => void;
 }
 
 export const BuildControls: React.FC<BuildControlsProps> = ({
@@ -24,6 +25,7 @@ export const BuildControls: React.FC<BuildControlsProps> = ({
   ingredients,
   price,
   purchasable,
+  showReceipt,
 }) => {
   return (
     <div className="build-controls">
@@ -41,7 +43,7 @@ export const BuildControls: React.FC<BuildControlsProps> = ({
           />
         );
       })}
-      <button className="order-button" type="button" disabled={!purchasable}>
+      <button className="order-button" type="button" disabled={!purchasable} onClick={showReceipt}>
         ORDER NOW
       </button>
     </div>

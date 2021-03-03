@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Burger } from './Burger/Burger';
 import { BuildControls } from './BuildControls/BuildControls';
 import { Ingredient } from '../utils/Ingredient';
+import { Modal } from './Modal/Modal';
+import { OrderSummary } from './OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE = {
   salad: 0.3,
@@ -19,10 +21,15 @@ export const BurgerMaker: React.FC = () => {
   });
   const [totalPrice, setTotalPrice] = useState<number>(4.0);
   const [purchasable, setPurchasable] = useState<boolean>(false);
+  const [showReceipt, setShowReceipt] = useState<boolean>(false);
 
   const updatePurchasable = (updatedIngredients: Ingredient) => {
     const sumOfIngredients = Object.values(updatedIngredients).reduce((acc, elem) => acc + elem, 0);
     setPurchasable(sumOfIngredients >= 1);
+  };
+
+  const showReceiptHandler = () => {
+    setShowReceipt(true);
   };
 
   const addIngredientHandler = (type: string) => {
@@ -50,12 +57,16 @@ export const BurgerMaker: React.FC = () => {
   return (
     <>
       <Burger ingredients={ingredients} />
+      <Modal show={showReceipt}>
+        <OrderSummary ingredients={ingredients} />
+      </Modal>
       <BuildControls
         ingredientAdded={addIngredientHandler}
         ingredientRemoved={removeIngredientHandler}
         ingredients={ingredients}
         price={totalPrice}
         purchasable={purchasable}
+        showReceipt={showReceiptHandler}
       />
     </>
   );
