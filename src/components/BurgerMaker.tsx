@@ -28,8 +28,12 @@ export const BurgerMaker: React.FC = () => {
     setPurchasable(sumOfIngredients >= 1);
   };
 
-  const showReceiptHandler = () => {
+  const showPurchaseHandler = () => {
     setShowReceipt(true);
+  };
+
+  const cancelPurchaseHandler = () => {
+    setShowReceipt(false);
   };
 
   const addIngredientHandler = (type: string) => {
@@ -57,7 +61,7 @@ export const BurgerMaker: React.FC = () => {
   return (
     <>
       <Burger ingredients={ingredients} />
-      <Modal show={showReceipt}>
+      <Modal show={showReceipt} clicked={cancelPurchaseHandler}>
         <OrderSummary ingredients={ingredients} />
       </Modal>
       <BuildControls
@@ -66,7 +70,7 @@ export const BurgerMaker: React.FC = () => {
         ingredients={ingredients}
         price={totalPrice}
         purchasable={purchasable}
-        showReceipt={showReceiptHandler}
+        showReceipt={showPurchaseHandler}
       />
     </>
   );
