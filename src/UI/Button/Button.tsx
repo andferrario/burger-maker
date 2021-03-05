@@ -7,7 +7,7 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, clicked, buttonType }) => (
-  <button onClick={clicked} className={['button', buttonType].join(' ')}>
+  <button type="button" onClick={clicked} className={['button', buttonType].join(' ')}>
     {children}
   </button>
 );
