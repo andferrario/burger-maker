@@ -28,14 +28,6 @@ export const BurgerMaker: React.FC = () => {
     setPurchasable(sumOfIngredients >= 1);
   };
 
-  const showPurchaseHandler = () => {
-    setShowReceipt(true);
-  };
-
-  const cancelPurchaseHandler = () => {
-    setShowReceipt(false);
-  };
-
   const addIngredientHandler = (type: string) => {
     const updatedIngredients = { ...ingredients };
     updatedIngredients[type] = ingredients[type] + 1;
@@ -58,11 +50,21 @@ export const BurgerMaker: React.FC = () => {
     updatePurchasable(updatedIngredients);
   };
 
+  const showPurchaseHandler = () => setShowReceipt(true);
+
+  const cancelPurchaseHandler = () => setShowReceipt(false);
+
+  const continuePurchaseHandler = () => alert('YOU CONTINUE!');
+
   return (
     <>
       <Burger ingredients={ingredients} />
       <Modal show={showReceipt} clicked={cancelPurchaseHandler}>
-        <OrderSummary ingredients={ingredients} />
+        <OrderSummary
+          ingredients={ingredients}
+          continuePurchase={continuePurchaseHandler}
+          cancelPurchase={cancelPurchaseHandler}
+        />
       </Modal>
       <BuildControls
         ingredientAdded={addIngredientHandler}
