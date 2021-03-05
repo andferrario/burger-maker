@@ -14,11 +14,11 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ ingredients }) => {
 
   return (
     <>
-      <p>
-        <strong>YOUR ORDER</strong>
-      </p>
+      <h3>YOUR ORDER</h3>
       <p>A super burger with the following ingredients:</p>
       <ul>{orderList}</ul>
+      <button>CANCEL</button>
+      <button>CONTINUE</button>
     </>
   );
 };
