@@ -1,9 +1,10 @@
 import React from 'react';
 import '../../styles/Layout.css';
+import { Toolbar } from '../Navigation/Toolbar/Toolbar';
 
 export const Layout: React.FC = ({ children }) => (
   <>
-    <div>Toolbar, sidebar, menu</div>
+    <Toolbar />
     <main className="content">{children}</main>
   </>
 );

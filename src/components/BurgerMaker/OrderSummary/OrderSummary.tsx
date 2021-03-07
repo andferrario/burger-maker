@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ingredient } from '../../../utils/Ingredient';
-import { Button } from '../../../UI/Button/Button';
+import { Button } from '../../UI/Button/Button';
 
 interface OrderSummaryProps {
   ingredients: Ingredient;
