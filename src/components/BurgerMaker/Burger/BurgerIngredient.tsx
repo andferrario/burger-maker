@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/BurgerIngredient.css';
+import '../../../styles/BurgerIngredient.css';
 
 interface IngredientProps {
   ingredientType: string;

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../styles/Control.css';
+import '../../../styles/Control.css';
 
 interface ControlProps {
   label: string;

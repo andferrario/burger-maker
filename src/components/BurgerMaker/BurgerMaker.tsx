@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Burger } from './Burger/Burger';
 import { BuildControls } from './BuildControls/BuildControls';
-import { Ingredient } from '../utils/Ingredient';
-import { Modal } from '../UI/Modal/Modal';
+import { Ingredient } from '../../utils/Ingredient';
+import { Modal } from '../../UI/Modal/Modal';
 import { OrderSummary } from './OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE = {

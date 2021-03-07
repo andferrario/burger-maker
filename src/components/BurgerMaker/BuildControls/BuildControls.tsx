@@ -1,7 +1,7 @@
 import React from 'react';
 import { Control } from './Control';
-import '../../styles/BuildControls.css';
-import { Ingredient } from '../../utils/Ingredient';
+import '../../../styles/BuildControls.css';
+import { Ingredient } from '../../../utils/Ingredient';
 
 const controls = [
   { label: 'Salad', type: 'salad' },
