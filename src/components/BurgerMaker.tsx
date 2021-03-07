@@ -62,6 +62,7 @@ export const BurgerMaker: React.FC = () => {
       <Modal show={showReceipt} clicked={cancelPurchaseHandler}>
         <OrderSummary
           ingredients={ingredients}
+          price={totalPrice}
           continuePurchase={continuePurchaseHandler}
           cancelPurchase={cancelPurchaseHandler}
         />

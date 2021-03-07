@@ -4,11 +4,12 @@ import { Button } from '../../UI/Button/Button';
 
 interface OrderSummaryProps {
   ingredients: Ingredient;
+  price: number;
   continuePurchase: () => void;
   cancelPurchase: () => void;
 }
 
-export const OrderSummary: React.FC<OrderSummaryProps> = ({ ingredients, continuePurchase, cancelPurchase }) => {
+export const OrderSummary: React.FC<OrderSummaryProps> = ({ ingredients, price, continuePurchase, cancelPurchase }) => {
   const orderList = Object.keys(ingredients).map((ingredientName) => (
     <li key={ingredientName}>
       <span style={{ textTransform: 'capitalize' }}>{ingredientName}</span>: {ingredients[ingredientName]}
@@ -20,6 +21,9 @@ export const OrderSummary: React.FC<OrderSummaryProps> = ({ ingredients, continu
       <h3>YOUR ORDER</h3>
       <p>A super burger with the following ingredients:</p>
       <ul>{orderList}</ul>
+      <p>
+        <strong>Total price: {price.toFixed(2)}</strong>
+      </p>
       <Button clicked={cancelPurchase} buttonType="danger">
         CANCEL
       </Button>
