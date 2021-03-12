@@ -3,9 +3,13 @@ import '../../../styles/Toolbar.css';
 import { Logo } from '../../Logo/Logo';
 import { NavigationItems } from '../NavigationItems/NavigationsItems';
 
-export const Toolbar: React.FC = () => (
+interface ToolbarProps {
+  clicked: () => void;
+}
+
+export const Toolbar: React.FC<ToolbarProps> = ({ clicked }) => (
   <header className="toolbar">
-    <div>MENU</div>
+    <div onClick={clicked}>MENU</div>
     <div className="logo-desktop">
       <Logo />
     </div>
