@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../styles/Toolbar.css';
 import { Logo } from '../../Logo/Logo';
 import { NavigationItems } from '../NavigationItems/NavigationsItems';
+import { DrawerToggle } from '../SideDrawer/DrawerToggle/DrawerToggle';
 
 interface ToolbarProps {
   clicked: () => void;
@@ -9,7 +10,7 @@ interface ToolbarProps {
 
 export const Toolbar: React.FC<ToolbarProps> = ({ clicked }) => (
   <header className="toolbar">
-    <div onClick={clicked}>MENU</div>
+    <DrawerToggle clicked={clicked} />
     <div className="logo-desktop">
       <Logo />
     </div>

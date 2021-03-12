@@ -4,10 +4,10 @@ import { Toolbar } from '../Navigation/Toolbar/Toolbar';
 import { SideDrawer } from '../Navigation/SideDrawer/SideDrawer';
 
 export const Layout: React.FC = ({ children }) => {
-  const [showSideDrawer, setShowSideDrawer] = useState(true);
+  const [showSideDrawer, setShowSideDrawer] = useState(false);
 
   const sideDrawerToggleHandler = () => {
-    setShowSideDrawer(!showSideDrawer);
+    setShowSideDrawer((prevState) => !prevState);
   };
 
   return (
