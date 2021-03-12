@@ -6,8 +6,10 @@ import { NavigationItems } from '../NavigationItems/NavigationsItems';
 export const Toolbar: React.FC = () => (
   <header className="toolbar">
     <div>MENU</div>
-    <Logo />
-    <nav>
+    <div className="logo-desktop">
+      <Logo />
+    </div>
+    <nav className="desktop-only">
       <NavigationItems />
     </nav>
   </header>
